@@ -25,7 +25,15 @@ export const useUIStore = defineStore('ui', () => {
   watch(
     () => currentTheme.value,
     (value) => {
-      if (value) localStorage.setItem(LOCAL_STORAGE_KEY, value)
+      if (value) {
+        localStorage.setItem(LOCAL_STORAGE_KEY, value)
+
+        const body = document.body
+        body.classList.forEach((i) => {
+          if (i.startsWith('theme-')) body.classList.remove(i)
+        })
+        body.classList.add('theme-' + value.toLowerCase())
+      }
     },
   )
 

@@ -8,7 +8,7 @@ uiStore.initTheme()
 </script>
 
 <template>
-  <div class="page-home" :class="['theme-' + uiStore.currentTheme?.toLowerCase()]">
+  <div class="page-home">
     <div class="page-home__hero">
       <h1 class="page-home__hero-title">Chat Widget</h1>
       <h2 class="page-home__hero-subtitle">By <a href="https://mikoladev.ee/">@MikolaDev</a></h2>
