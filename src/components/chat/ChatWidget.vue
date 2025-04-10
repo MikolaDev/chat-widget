@@ -86,7 +86,7 @@ watch(
   border: 1px solid var(--color-border-default);
   overflow: hidden;
   border-radius: 0.5rem;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   box-shadow:
     0 10px 30px rgba(#3b435c, 0.2),

@@ -58,22 +58,22 @@ uiStore.initTheme()
   }
 
   &__chat {
+    --width: 460px;
+    --height: 700px;
+    --padding: 2rem;
     position: fixed;
     z-index: 10;
-    bottom: 0;
-    right: 0;
-    margin: 2rem;
-    width: min(400px, 100%);
-    height: min(700px, 100dvh);
+    bottom: var(--padding);
+    right: var(--padding);
   }
 
   @media (max-width: 460px) {
+    &__hero-title {
+      font-size: 3rem;
+    }
+
     &__chat {
-      bottom: 1rem;
-      right: 1rem;
-      margin: 0;
-      width: calc(100% - 2rem);
-      height: calc(100dvh - 2rem);
+      --padding: 1rem;
     }
   }
 }

@@ -32,16 +32,25 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .chat {
+  --_width: var(--width, 460px);
+  --_height: var(--height, 700px);
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
   gap: 1rem;
+  min-height: 4rem;
+  min-width: 4rem;
+  max-width: min(var(--_width), calc(100% - var(--padding) * 2));
+  max-height: min(var(--_height), calc(100dvh - var(--padding) * 2));
 
   &__widget {
     transform-origin: 100% 100%;
-    width: 100%;
-    height: 100%;
+    width: var(--_width);
+    height: var(--_height);
+    max-width: 100%;
+    max-height: 100%;
 
     &-transition {
       &-enter-active,
