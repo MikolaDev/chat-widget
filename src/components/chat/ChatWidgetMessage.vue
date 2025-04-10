@@ -61,8 +61,10 @@ defineProps<IMessage>()
     color: var(--color-text-default);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    word-break: break-all;
     align-self: flex-start;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
 
     p {
       margin: 0;

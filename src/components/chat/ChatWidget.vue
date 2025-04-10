@@ -71,7 +71,12 @@ watch(
       />
     </div>
 
-    <ChatWidgetBar class="chat-widget__bar" v-model="messageText" @submitMessage="submitMessage" />
+    <ChatWidgetBar
+      class="chat-widget__bar"
+      v-model="messageText"
+      @submitMessage="submitMessage"
+      :disabled="!chatStore.isCanSendMessages"
+    />
   </main>
 </template>
 

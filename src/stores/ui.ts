@@ -15,8 +15,6 @@ export const useUIStore = defineStore('ui', () => {
     const savedTheme = localStorage.getItem(LOCAL_STORAGE_KEY)
     const isPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
-    console.log(savedTheme)
-
     if (savedTheme !== null && Object.values(ThemeType).includes(savedTheme as ThemeType)) {
       currentTheme.value = savedTheme as ThemeType
     } else {

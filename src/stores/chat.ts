@@ -4,11 +4,13 @@ import { ref, watch } from 'vue'
 import { DateTime } from 'luxon'
 import Cookies from 'js-cookie'
 
+export const MAX_NUMBER_MESSAGES_IN_CHAT = 20
 const COOKIE_KEY = 'chat/messages'
 const COOKIE_EXPIRATION_TIME = 5 / (60 * 24)
 
 export const useChatStore = defineStore('chat', () => {
   const messages = ref<IMessage[]>([])
+  const isCanSendMessages = ref<boolean>(true)
 
   const loadMessages = () => {
     try {
@@ -18,12 +20,15 @@ export const useChatStore = defineStore('chat', () => {
       console.warn('Error loading messages', error)
       messages.value = []
     }
+
+    isCanSendMessages.value = messages.value.length < MAX_NUMBER_MESSAGES_IN_CHAT
   }
 
   watch(
     messages,
     () => {
       Cookies.set(COOKIE_KEY, JSON.stringify(messages.value), { expires: COOKIE_EXPIRATION_TIME })
+      isCanSendMessages.value = messages.value.length < MAX_NUMBER_MESSAGES_IN_CHAT
     },
     { deep: true },
   )
@@ -52,6 +57,7 @@ export const useChatStore = defineStore('chat', () => {
   })
 
   return {
+    isCanSendMessages,
     messages,
     loadMessages,
     addMessage,

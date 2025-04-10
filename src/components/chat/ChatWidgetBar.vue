@@ -3,6 +3,7 @@ import IconSend from '@/components/icons/IconSend.vue'
 import ButtonWithIcon from '@/components/ButtonWithIcon.vue'
 import { isDesktop } from '@/utils/device-utils.ts'
 
+defineProps({ disabled: Boolean })
 const messageText = defineModel({ required: true, type: String })
 const emit = defineEmits(['update:messageText', 'submitMessage'])
 
@@ -28,11 +29,12 @@ const inputHandler = (event: KeyboardEvent) => {
         placeholder="Напишите сообщение..."
         type="text"
         rows="1"
+        :disabled="disabled"
       ></textarea>
 
       <ButtonWithIcon
         class="chat-widget-bar__form-button"
-        :disabled="messageText.length === 0"
+        :disabled="disabled || messageText.length === 0"
         @click="emit('submitMessage')"
         :icon="IconSend"
       />
@@ -79,6 +81,13 @@ const inputHandler = (event: KeyboardEvent) => {
 
       &:focus {
         height: calc(1.5rem * 3 + 0.75em * 2);
+      }
+
+      &:disabled {
+        &,
+        &::placeholder {
+          color: var(--color-text-muted);
+        }
       }
     }
 

@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ChatWidget from '@/components/chat/ChatWidget.vue'
 import ButtonWithIcon from '@/components/ButtonWithIcon.vue'
 import IconClose from '@/components/icons/IconClose.vue'
 import IconChat from '@/components/icons/IconChat.vue'
 
 const isOpen = ref<boolean>(false)
+
+onMounted(() => {
+  setTimeout(() => {
+    isOpen.value = true
+  }, 5000)
+})
 </script>
 
 <template>
