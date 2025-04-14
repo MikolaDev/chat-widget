@@ -21,14 +21,14 @@ export const useChatStore = defineStore('chat', () => {
       messages.value = []
     }
 
-    isCanSendMessages.value = messages.value.length < MAX_NUMBER_MESSAGES_IN_CHAT
+    isCanSendMessages.value = messages.value.length <= MAX_NUMBER_MESSAGES_IN_CHAT
   }
 
   watch(
     messages,
     () => {
       Cookies.set(COOKIE_KEY, JSON.stringify(messages.value), { expires: COOKIE_EXPIRATION_TIME })
-      isCanSendMessages.value = messages.value.length < MAX_NUMBER_MESSAGES_IN_CHAT
+      isCanSendMessages.value = messages.value.length <= MAX_NUMBER_MESSAGES_IN_CHAT
     },
     { deep: true },
   )

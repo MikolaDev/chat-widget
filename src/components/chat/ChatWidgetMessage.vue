@@ -62,7 +62,7 @@ defineProps<IMessage>()
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     align-self: flex-start;
-    word-break: break-all;
+    word-break: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
 
